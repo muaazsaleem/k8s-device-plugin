@@ -30,7 +30,7 @@ The list of prerequisites for running GPU enabled Applications:
 
 You can deploy a TensorFlow Jupyter notebook by running the following command:
 ```shell
-$ kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.9/examples/tensorflow-notebook.yml
+$ kubectl create -f https://raw.githubusercontent.com/muaazsaleem/k8s-device-plugin/v1.11/examples/tensorflow-notebook.yml
 ```
 
 This creates a tensorflow deployment with one replicas. You can see if the pods are running by typing the following command:
@@ -43,6 +43,11 @@ tf-notebook-747db6987b-vz4wj   1/1       Running   0          1h
 Copy the name of the pod and run the following command to see where the pod landed:
 ```shell
 $ kubectl describe pods tf-notebook-747db6987b-vz4wj | grep 'Node:'
+```
+
+Create a port-forward to the pod
+```shell
+$ kubectl port-forward pod/tf-notebook-747db6987b-vz4wj 8888:8888
 ```
 
 Finally check the logs of the TensorFlow Jupyter notebook to get the login token for the first time
